@@ -3969,7 +3969,6 @@ Tab1:Toggle("Auto Farm Level",false,function(t)
                 CheckLv()
                 Quest()
                 --Abandon()
-                EquipWeapon(_G.SelectToolWeapon)
                 AutoHaki()
                 game.Players.LocalPlayer.Character.Humanoid:ChangeState(11) 
                 Tp()
@@ -4100,4 +4099,5 @@ Tab1:Button("FPS Boost",function(t)
         end
     end
 end)
+
 
