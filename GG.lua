@@ -1,4 +1,3 @@
-
 local RadientPaid = {}
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
@@ -3945,16 +3944,6 @@ function AutoHaki()
 end
 end
 
-
-_G.SelectToolWeapon = nil
-function EquipWeapon(ToolSe)
-   if game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe) then
-       getgenv().tool = game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe)
-       wait(.1)
-       game.Players.LocalPlayer.Character.Humanoid:EquipTool(tool)
-   end
-end
-
 Tab1:Label("Auto Farm")
 
 
@@ -3999,13 +3988,8 @@ pcall(function()
     game:GetService("RunService").Heartbeat:Connect(function()
         if _G.AutoFarm then
             if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-            game:GetService'VirtualUser':CaptureController()
-            game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-            game:GetService'VirtualUser':CaptureController()
             game:GetService('VirtualUser'):ClickButton1(Vector2.new(851, 158), game:GetService("Workspace").Camera.CFrame)
-            RigC.activeController.hitboxMagnitude = 80
             Rig.CameraShakeInstance.CameraShakeState = {FadingIn = 3,FadingOut =  2,Sustained = 0,Inactive = 1} 
-            RigC.activeController.timeToNextAttack = 1
             elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
             end
     end
@@ -4014,50 +3998,6 @@ end)
 end)
 
 
-
-
-
-function TP(P1,P2)
-    local Distance = (P1 - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-    if Distance >= 2000 then
-    Speed = 150
-    else
-    Speed = 300
-    end
-    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear)
-    tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = P2})
-    tween:Play()
-    _G.Clip = true
-    wait(Distance/Speed)
-    _G.Clip = false
-end
-
-
-
-Wapon = {}
-for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
-    if v:IsA("Tool") then
-        table.insert(Wapon ,v.Name)
-    end
-end
- local SelectWeapona = Tab1:Dropdown("Select Weapon",Wapon,function(Value)
-    _G.SelectToolWeapon = Value
-    SelectToolWeaponOld = Value
-end)
-Tab1:Button("Refresh Weapon",function()
-    SelectWeapona:Clear()
-    Wapon = {}
-    for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
-        if v:IsA("Tool") then
-            SelectWeapona:Add(v.Name)
-        end
-    end
-    for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
-        if v:IsA("Tool") then
-            SelectWeapona:Add(v.Name)
-        end
-    end
-end)
 
 
 Tab1:Button("FPS Boost",function(t)
@@ -4099,5 +4039,4 @@ Tab1:Button("FPS Boost",function(t)
         end
     end
 end)
-
 
